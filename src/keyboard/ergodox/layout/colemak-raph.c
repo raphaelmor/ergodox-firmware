@@ -59,7 +59,7 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     KB_MATRIX_LAYER( 0,
     // left hand
     _esc,      _1,         _2,         _3,         _4,         _5,         _grave,
-    _tab,      _Q,         _W,         _E,         _R,         _T,         1,
+    _tab,      _Q,         _W,         _E,         _R,         _T,         0,
     _bs,       _A,         _S,         _D,         _F,         _G,
     _shiftL,   _Z,         _X,         _C,         _V,         _B,         0,
     2,         _ctrlL,     _altL,      _guiL,      1,
@@ -73,7 +73,7 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     0,          _Y,         _U,         _I,         _O,         _P,         _backslash,
                 _H,         _J,         _K,         _L,         _semicolon, _quote,
     0,          _N,         _M,         _comma,     _period,    _slash,     _shiftR,
-                            _arrowL,    _arrowU,    _arrowD,    _arrowR,    0,
+                            _arrowL,    _arrowU,    _arrowD,    _arrowR,    3,
 
     _arrowU,    _arrowR,
     _arrowD,    0,          0,
@@ -126,6 +126,30 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     _enter, _O,
     _enter, 0,         0,
     _enter, _0,        _0),
+
+		// LAYOUT L3: KSP : OS in colemak
+		KB_MATRIX_LAYER( 0,
+		// left hand
+		_Z,        _1,        _2,        _3,        _4,        _5,        _bracketL,
+		_shiftL,   _Q,        _W,        _K,         0,         0,        _C,
+		_ctrlL,    _A,        _D,        _G,         0,         0,
+		_X,         0,         0,         0,         0,         0,        _V,
+		 0,         0,         0,         0,        _altL,
+
+																					    					   _insert,   _del,
+																					    	 0,         0,        _period,
+																						    _space,    _M,        _comma,
+
+		// right hand
+	 _bracketR, _6,        _7,        _8,        _9,        _0,        _dec_del_kp,
+	 _bs,       _H,         0,        _L,         0,         0,        _F2,
+					    _J,        _Y,        _N,        _U,         0,        _F3,
+	 _B,         0,         0,        _F10,      _F11,      _F12,      _F4,
+										  	 _arrowL,   _arrowU,   _arrowD,   _arrowR,    3,
+
+	 _capsLock, _E,
+	 _I,         0,        0,
+	 _T,        _F,       _S),
 };
 
 // ----------------------------------------------------------------------------
@@ -184,7 +208,7 @@ const void_funptr_t PROGMEM _kb_layout_press[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     KB_MATRIX_LAYER( NULL,
     // left hand
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
-    kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     lpush1,
+    kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     NULL,
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     NULL,
     lpush2,     kprrel,     kprrel,     kprrel,     lpush1,
@@ -197,7 +221,7 @@ const void_funptr_t PROGMEM _kb_layout_press[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     NULL,       kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
                 kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
     NULL,       kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
-                            kprrel,     kprrel,     kprrel,     kprrel,     NULL,
+                            kprrel,     kprrel,     kprrel,     kprrel,     lpush3,
 
     kprrel,     kprrel,
     kprrel,     NULL,       NULL,
@@ -248,6 +272,30 @@ const void_funptr_t PROGMEM _kb_layout_press[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
     ccoprre,     ccoshprre,
     ccoalprre,   NULL,     NULL,
     ccoalshprre, ccoprre,  ccoalprre),
+
+		// LAYOUT L3: KSP : OS in colemak
+		KB_MATRIX_LAYER( 0,
+		// left hand
+		kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,   kprrel,
+		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,
+		kprrel, NULL,   NULL,   NULL,   NULL,   NULL,   kprrel,
+		NULL,   NULL,   NULL,   NULL,   kprrel,
+
+																					  kprrel, kprrel,
+																	  NULL,   NULL,   kprrel,
+																		kprrel, kprrel, kprrel,
+
+		// right hand
+	 kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+	 kprrel, kprrel, NULL,   kprrel, NULL,   NULL,   kprrel,
+					 kprrel, kprrel, kprrel, kprrel, NULL,   kprrel,
+	 kprrel, NULL,   NULL,   kprrel, kprrel, kprrel, kprrel,
+									 kprrel, kprrel, kprrel, kprrel, lpop3,
+
+	 kprrel, kprrel,
+	 kprrel, NULL,   NULL,
+	 kprrel, kprrel, kprrel),
 };
 
 // ----------------------------------------------------------------------------
@@ -259,10 +307,10 @@ const void_funptr_t PROGMEM _kb_layout_release[KB_LAYERS][KB_ROWS][KB_COLUMNS] =
     KB_MATRIX_LAYER( NULL,
     // left hand
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
-    kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     lpop1,
+    kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     NULL,
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,
     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     kprrel,     NULL,
-    lpop2,       kprrel,     kprrel,     kprrel,     lpop1,
+    lpop2,      kprrel,     kprrel,     kprrel,     lpop1,
 
                                                                 NULL,       NULL,
                                                     NULL,       NULL,       NULL,
@@ -323,4 +371,28 @@ const void_funptr_t PROGMEM _kb_layout_release[KB_LAYERS][KB_ROWS][KB_COLUMNS] =
     ccoprre,     ccoshprre,
     ccoalprre,   NULL,     NULL,
     ccoalshprre, ccoprre,  ccoalprre),
+
+		// LAYOUT L3: KSP : OS in colemak
+		KB_MATRIX_LAYER( 0,
+		// left hand
+		kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,   kprrel,
+		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,
+		kprrel, NULL,   NULL,   NULL,   NULL,   NULL,   kprrel,
+		NULL,   NULL,   NULL,   NULL,   kprrel,
+
+																					  kprrel, kprrel,
+																	  NULL,   NULL,   kprrel,
+																		kprrel, kprrel, kprrel,
+
+		// right hand
+	 kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+	 kprrel, kprrel, NULL,   kprrel, NULL,   NULL,   kprrel,
+					 kprrel, kprrel, kprrel, kprrel, NULL,   kprrel,
+	 kprrel, NULL,   NULL,   kprrel, kprrel, kprrel, kprrel,
+									 kprrel, kprrel, kprrel, kprrel, NULL,
+
+	 kprrel, kprrel,
+	 kprrel, NULL,   NULL,
+	 kprrel, kprrel, kprrel),
 };
