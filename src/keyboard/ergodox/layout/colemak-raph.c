@@ -27,6 +27,11 @@ generate html from json : must be called in root
 #include "../layout.h"
 #include "../../../main.h"
 
+void kbfun_alt_press_release(void) {
+	_kbfun_press_release(main_arg_is_pressed, KEY_LeftAlt);
+	kbfun_press_release();
+}
+
 void kbfun_command_press_release(void) {
 	_kbfun_press_release(main_arg_is_pressed, KEY_LeftGUI);
 	kbfun_press_release();
@@ -134,7 +139,7 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
 		_shiftL,   _Q,        _W,        _K,         0,         0,        _C,
 		_ctrlL,    _A,        _D,        _G,         0,         0,
 		_X,         0,         0,         0,         0,         0,        _V,
-		 0,         0,         0,         0,        _altL,
+		_F5,       _F5,       _F9,       _F9,       _altL,
 
 																					    					   _insert,   _del,
 																					    	 0,         0,        _period,
@@ -194,6 +199,7 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
 #define  slponum  &kbfun_layer_pop_numpad
 
 // custom
+#define calprre     &kbfun_alt_press_release
 #define ccoprre     &kbfun_command_press_release
 #define ccoalprre   &kbfun_command_alt_press_release
 #define ccoalshprre &kbfun_command_alt_shift_press_release
@@ -276,15 +282,15 @@ const void_funptr_t PROGMEM _kb_layout_press[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
 		// LAYOUT L3: KSP : OS in colemak
 		KB_MATRIX_LAYER( 0,
 		// left hand
-		kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
-		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,   kprrel,
-		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,
-		kprrel, NULL,   NULL,   NULL,   NULL,   NULL,   kprrel,
-		NULL,   NULL,   NULL,   NULL,   kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  kprrel, kprrel, kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  NULL,   NULL,   kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  NULL,   NULL,
+		kprrel, NULL,    NULL,   NULL,    NULL,   NULL,   kprrel,
+		kprrel, calprre, kprrel, calprre, kprrel,
 
-																					  kprrel, kprrel,
-																	  NULL,   NULL,   kprrel,
-																		kprrel, kprrel, kprrel,
+																  					  kprrel, kprrel,
+																	    NULL,   NULL,   kprrel,
+																	  	kprrel, kprrel, kprrel,
 
 		// right hand
 	 kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
@@ -375,15 +381,15 @@ const void_funptr_t PROGMEM _kb_layout_release[KB_LAYERS][KB_ROWS][KB_COLUMNS] =
 		// LAYOUT L3: KSP : OS in colemak
 		KB_MATRIX_LAYER( 0,
 		// left hand
-		kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
-		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,   kprrel,
-		kprrel, kprrel, kprrel, kprrel, NULL,   NULL,
-		kprrel, NULL,   NULL,   NULL,   NULL,   NULL,   kprrel,
-		NULL,   NULL,   NULL,   NULL,   kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  kprrel, kprrel, kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  NULL,   NULL,   kprrel,
+		kprrel, kprrel,  kprrel, kprrel,  NULL,   NULL,
+		kprrel, NULL,    NULL,   NULL,    NULL,   NULL,   kprrel,
+		kprrel, calprre, kprrel, calprre, kprrel,
 
-																					  kprrel, kprrel,
-																	  NULL,   NULL,   kprrel,
-																		kprrel, kprrel, kprrel,
+																	   				  kprrel, kprrel,
+																	    NULL,   NULL,   kprrel,
+																	  	kprrel, kprrel, kprrel,
 
 		// right hand
 	 kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
